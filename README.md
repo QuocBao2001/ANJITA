@@ -3,7 +3,7 @@
 ## Requirements
 <br/>
 
-Make new dir in this project and name it weight
+Make new dir in this project and name it `weight`.
 
 Go to `https://drive.google.com/drive/folders/15PlXWkFheuBxJOYkwm9iS_aZCcr8L0A7` download `yolov5l.pt` into `weight` folder.
 
