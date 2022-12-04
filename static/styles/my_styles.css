@@ -1,0 +1,154 @@
+/* intro style */
+.img_bg {
+    filter: brightness(40%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-info {
+    background-color: #6D9886;
+    border-color: #6D9886;
+    color: #F7F7F7;
+}
+
+.btn-info:hover {
+    background-color: #8DB8A6;
+    color: #F7F7F7;
+    border-color: #8DB8A6;
+}
+
+.btn-info:disabled {
+    background-color: #8DB8A6;
+    color: #F7F7F7;
+    border-color: #8DB8A6;
+}
+
+.btn-info:not(:disabled):not(:disabled):active {
+    background-color: #9DC8B6;
+    color: #F7F7F7;
+    border-color: #9DC8B6;
+ } 
+
+
+/* body style */
+body {
+    background-color: #393E46;
+}
+
+p {
+    color: #F2E7D5;
+}
+
+h1 {
+    color: #F2F7F5;
+}
+
+h4 {
+    color: #F2E7D5;
+    text-align: center;
+}
+
+.part_title {
+    color: #F2E7D5;
+    text-align: center;
+}
+
+hr {
+    margin: 5%;
+    border-top: 2px solid #F2E7D5;
+}
+
+a {
+    color:  #6D9886;;
+}
+
+/* user guide style */
+.fw-normal {
+    color: #F2E7D5;
+}
+
+.use_guide_img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+ul li {
+    color: #F2E7D5;
+    margin: 5px;
+    font-size: 15px;
+  }
+
+/* image chosen box style */
+.img_chose_container {
+    max-height:  500px;
+    max-width: 600px;
+}
+
+.img_chose_wrapper {
+    height: 500px;
+    max-height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #F2E7D5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.img_chose_wrapper .image_chose {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_chose_wrapper .image_chose img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img_chose_wrapper .Icon_upload {
+    font-size: 100px;
+    color: #F2E7D5;
+    text-align: center;
+}
+
+.img_chose_wrapper .Text_upload {
+    font-size: 20px;
+    color: #F2E7D5;
+}
+
+.img_chose_wrapper #Cancel-bt {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #F2E7D5;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.img_chose_container .btn-secondary {
+    margin-top: 30 px;
+    width: 100%;
+    height: 50px;
+    display: block;
+    border: none;
+}
+
+img[src=""] {
+    display: none;
+}
+
+.img_button {
+    align-self: center;
+    text-align: center;
+    height: 100px;
+    width: 80%;
+}
