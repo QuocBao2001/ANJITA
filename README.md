@@ -5,13 +5,17 @@
 
 Make new dir in this project and name it `weight`.
 
-Go to `https://drive.google.com/drive/folders/15PlXWkFheuBxJOYkwm9iS_aZCcr8L0A7` download `yolov5l.pt` into `weight` folder.
+Go to 
+```shell
+https://drive.google.com/drive/folders/15PlXWkFheuBxJOYkwm9iS_aZCcr8L0A7
+```
+Download `yolov5l.pt` into `weight` folder.
 
 We many thanks to repo author of `https://github.com/lannguyen0910/food-recognition` for providing weight file.
 
 Try to create new anaconda enviroments with ```python>=3.8```.
 
-I think fisrt, you should try to download requirement for flask by:
+install flask:
 
 ```shell
 pip  install flask
@@ -29,6 +33,7 @@ if something missing, try to read error and figure out name of missing packages.
 
 <br/>
 <br/>
+
 ## User guide
 <br/>
 
