@@ -21,6 +21,11 @@ install flask:
 pip  install flask
 ```
 
+install pymongo
+```shell
+pip install pymongo
+```
+
 Then install `pytorch` that match your cuda if you have, if not you can use torch for cpu (`PyTorch>=1.7`).
 
 Install yolov5 dependencies: 
