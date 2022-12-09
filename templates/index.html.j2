@@ -116,7 +116,7 @@
               <div class="carousel-caption text-start">
                 <h1>We help you choose recipes</h1>
                 <p>Save your cooking time. Make your meals more nutritious and delicious.</p>
-                <p><a class="btn btn-lg btn-info" href="#upload_place">Start cooking</a></p>
+                <p><a class="btn btn-lg btn-info" onclick="showRecipe()">Start cooking</a></p>
               </div>
             </div>
         </div>
@@ -232,6 +232,7 @@
       <div class="col-md-4">
       <h4>we saw that you have:</h4>
       <ul id="list_ingre"></ul>
+      <p><a class="btn btn-lg btn-info" href="#dishes_result" onclick="showDishes()">See dishes can make</a></p>
       </div>
       <div class="col-md-7">
         <div class="img_chose_wrapper">
@@ -241,6 +242,21 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="container marketing" id='dishes_result' hidden>
+    <hr>
+      <h2 class="part_title">With these ingredients, we recommend you try following dishes</h2>
+    <hr>
+    <h4 id="dish_name"></h4>
+    <p><a class="btn btn-lg btn-info" onclick="showRecipe()">start cooking</a></p>
+  </div>
+
+  <div class="container marketing" id='recipes_result' hidden>
+    <hr>
+      <h2 class="part_title">cooking recipe</h2>
+    <hr>
+    <h4 id="recipe"></h4>
   </div>
 
     <hr>
@@ -264,6 +280,10 @@
     const displayImg = document.querySelector("#face_img")
     const imgResult = document.querySelector("#img_result")
     const listIngre = document.querySelector("#list_ingre")
+    const dishName = document.querySelector("#dish_name")
+    const dishesResult = document.querySelector('#dishes_result')
+    const recipeResult = document.querySelector('#recipes_result')
+    const recipe = document.querySelector('#recipe')
 
     function activeBt(){
       defaultBtn.click();
@@ -314,6 +334,30 @@
       uploadBtn.disabled = true;
       imgResult.hidden = true;
     })
+
+    function showDishes(){
+      fetch('/getDishes', {
+        method: 'GET',
+      })
+      .then(response => response.json())
+      .then(data => {
+        dishesResult.hidden = false
+        dishName.innerHTML = data["dishes"]
+        dishesResult.scrollIntoView();
+      })
+    }
+
+    function showRecipe(){
+      fetch('/getRecipes', {
+        method: 'GET',
+      })
+      .then(response => response.json())
+      .then(data => {
+        recipeResult.hidden = false
+        recipe.innerHTML = data["Recipe"]
+        recipeResult.scrollIntoView();
+      })
+    }
   </script>
 
 

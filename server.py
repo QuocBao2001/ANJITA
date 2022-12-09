@@ -5,6 +5,15 @@ from PIL import Image
 import io
 import base64
 import torch
+import pymongo
+
+# connect db setup
+URI = "mongodb+srv://ANJITA_admin:admin_ANJITA@cluster0.1hnatpx.mongodb.net/?retryWrites=true&w=majority"
+
+client=pymongo.MongoClient(URI)
+
+db = client.ANJITA_DB
+FRecipes = db.Food_Recipes
 
 # init Flask
 app = Flask(__name__)
@@ -44,6 +53,19 @@ def home_page():
 
         return { "user_image": base64img, "ingredients": ingredients}
 
+# dishes request handler
+@app.route("/getDishes", methods=['GET', 'POST'])
+def getDishes():
+    if request.method == 'GET':
+        return {"dishes": "Bun Dau Mam Tom"}
+
+# recipe request handler
+@app.route("/getRecipes", methods=['GET', 'POST'])
+def getRecipes():
+    if request.method == 'GET':
+        RecipesObj = FRecipes.find_one({'Dish': "BunDau"})
+        Recipe = RecipesObj['Recipes']
+        return {"Recipe": Recipe}
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

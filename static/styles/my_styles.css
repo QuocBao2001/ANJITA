@@ -79,6 +79,7 @@ ul li {
     color: #F2E7D5;
     margin: 5px;
     font-size: 15px;
+    list-style-position: inside;
   }
 
 /* image chosen box style */
