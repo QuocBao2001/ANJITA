@@ -18,7 +18,7 @@ Try to create new anaconda enviroments with ```python>=3.8```.
 install flask:
 
 ```shell
-pip  install flask
+pip install flask
 ```
 
 install pymongo

@@ -67,5 +67,18 @@ def getRecipes():
         Recipe = RecipesObj['Recipes']
         return {"Recipe": Recipe}
 
+# login request handler
+@app.route('/login')
+def login():
+	return render_template('login.html.j2')
+
+@app.route('/submit', methods=['POST'])
+def login_submit():
+	_user_name = request.form['user_name']
+	_password = request.form['inputPassword']
+	# validate the received values
+	if _user_name == 'admin' and _password == '0987654321' and request.method == "POST": return render_template('index.html.j2')
+	else: return render_template('login.html.j2')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
