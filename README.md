@@ -30,6 +30,6 @@ then follow the README.md in inversecooking repo to download all needed dependen
 ## User guide
 <br/>
 
-- Step 1: acctive your conda enviroments.
+- Step 1: acctive your conda environments.
 - Step 2: run `python server.py`.
 - Step 3: go to `0.0.0.0:5000` and try to upload.

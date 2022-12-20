@@ -331,6 +331,8 @@
       .then(data => {
           console.log(data)
           loading.hidden = true
+          recipe_list = []
+          dish_name = []
 
           for (dish in data){
             name_tag = document.querySelector("#name" + dish);
