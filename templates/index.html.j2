@@ -216,47 +216,61 @@
           <button onclick="activeBt()" class="btn btn-lg btn-info img_button">Choose an image</button>
         </div>
         <div style="display: flex; justify-content: center; height: 50%; padding: 5px;">
-          <button onclick="upLoad()" class="btn btn-lg btn-info img_button" id="Upload-btn" disabled>
+          <button onclick="upLoad()" href="#loading" class="btn btn-lg btn-info img_button" id="Upload-btn" disabled>
             Upload chosen image
           </button>
         </div>
       </div>
     </div>
   </div>
-
+  <div class="container marketing" id='loading' hidden>
+    <hr>
+    <div class="spinner-border" style="display:block;margin: auto;width: 6rem; height: 6rem;" role="status">
+      <span class="sr-only" style="margin: auto;">Loading...</span>
+    </div>
+    <h4 class="part_title">Did you know</h2>
+    <p class="part_title" style="margin-top: 10px;">The name Anjta is inspired by the phrase "An gi ta" in Vietnamese</p>
+    <hr>
+  </div>
   <div class="container marketing" id='img_result' hidden>
     <hr>
-      <h2 class="part_title"> Your cooking ingredients are amazing </h2>
+    <h2 class="part_title"> Your cooking ingredients are amazing </h2>
+    <p style="margin-top: 50px; text-align: center">With these ingredients, we recommend you try following dishes</p>
     <hr>
-    <div class="row featurette">
-      <div class="col-md-4">
-      <h4>we saw that you have:</h4>
-      <ul id="list_ingre"></ul>
-      <p><a class="btn btn-lg btn-info" href="#dishes_result" onclick="showDishes()">See dishes can make</a></p>
+    <div class="col">
+    <div class="row">
+      <div class="col-lg-5" style="text-align: center; margin:auto; margin-top: 30px; margin-bottom:30px">
+        <h4 id="name0"></h4>
+        <p id="ingrs0"></p>
+        <p><a class="btn btn-secondary" href="#recipes_result" onclick="showRecipe(0)">See recipe &raquo;</a></p>
       </div>
-      <div class="col-md-7">
-        <div class="img_chose_wrapper">
-          <div class="image_chose">
-            <img id="face_img" src="{{user_image}}"  alt="">
-          </div>
-        </div>
+      <div class="col-lg-5" style="text-align: center; margin:auto; margin-top: 30px; margin-bottom:30px">
+        <h4 id="name1"></h4>
+        <p id="ingrs1"></p>
+        <p><a class="btn btn-secondary" href="#recipes_result" onclick="showRecipe(1)">See recipe &raquo;</a></p>
       </div>
     </div>
-  </div>
-
-  <div class="container marketing" id='dishes_result' hidden>
-    <hr>
-      <h2 class="part_title">With these ingredients, we recommend you try following dishes</h2>
-    <hr>
-    <h4 id="dish_name"></h4>
-    <p><a class="btn btn-lg btn-info" onclick="showRecipe()">start cooking</a></p>
+        <div class="row">
+      <div class="col-lg-5" style="text-align: center; margin:auto; margin-top: 30px; margin-bottom:30px">
+        <h4 id="name2"></h4>
+        <p id="ingrs2"></p>
+        <p><a class="btn btn-secondary" href="#recipes_result" onclick="showRecipe(2)">See recipe &raquo;</a></p>
+      </div>
+      <div class="col-lg-5" style="text-align: center; margin:auto; margin-top: 30px; margin-bottom:30px">
+        <h4 id="name3"></h4>
+        <p id="ingrs3"></p>
+        <p><a class="btn btn-secondary" href="#recipes_result" onclick="showRecipe(3)">See recipe &raquo;</a></p>
+      </div>
+    </div>
+    </div>
   </div>
 
   <div class="container marketing" id='recipes_result' hidden>
     <hr>
       <h2 class="part_title">cooking recipe</h2>
+      <h4 id="dish_chosen"></h4>
     <hr>
-    <h4 id="recipe"></h4>
+    <ul id="recipe"></ul>
   </div>
 
     <hr>
@@ -279,11 +293,22 @@
     const submitBtn = document.querySelector("#submit")
     const displayImg = document.querySelector("#face_img")
     const imgResult = document.querySelector("#img_result")
-    const listIngre = document.querySelector("#list_ingre")
-    const dishName = document.querySelector("#dish_name")
-    const dishesResult = document.querySelector('#dishes_result')
-    const recipeResult = document.querySelector('#recipes_result')
-    const recipe = document.querySelector('#recipe')
+    const loading = document.querySelector("#loading")
+    const recipeResult = document.querySelector("#recipes_result")
+    const recipeField = document.querySelector("#recipe")
+    const recipe_list = []
+    const dish_name = []
+
+    function showRecipe(id){
+      let text = ""
+      for (dishes in recipe_list[id]){
+        text += "<li>" + recipe_list[id][dishes] + "</li>"
+      }
+      recipeField.innerHTML = text
+      const dish_chosen = document.querySelector("#dish_chosen")
+      dish_chosen.innerHTML = dish_name[id]
+      recipeResult.hidden = false 
+    }
 
     function activeBt(){
       defaultBtn.click();
@@ -292,6 +317,9 @@
     function upLoad(){
       const formData = new FormData();
       const fileField = document.querySelector('input[type="file"]');
+      imgResult.hidden = true;
+      loading.hidden = false;
+      loading.scrollIntoView();
 
       formData.append('input_img', fileField.files[0]);
 
@@ -301,16 +329,18 @@
       })
       .then(response => response.json())
       .then(data => {
-          displayImg.src = data["user_image"]
-          console.log(data["ingredients"])
-          imgResult.hidden = false
-          let text = ""
-          ingre_list = data["ingredients"]
-          for (ingre in data["ingredients"]){
-            console.log(ingre)
-            text += "<li>" + data["ingredients"][ingre] + "</li>"
+          console.log(data)
+          loading.hidden = true
+
+          for (dish in data){
+            name_tag = document.querySelector("#name" + dish);
+            recipe_tag = document.querySelector("#ingrs" + dish);
+            name_tag.innerHTML = data[dish]['title']
+            recipe_tag.innerHTML = data[dish]['ingrs']
+            dish_name.push(data[dish]['title'])
+            recipe_list.push(data[dish]['recipe'])        
           }
-          listIngre.innerHTML = text
+          imgResult.hidden = false
           imgResult.scrollIntoView();
       })
     }
@@ -326,7 +356,9 @@
       }
       reader.readAsDataURL(file);
       }
-      imgResult.hidden = true
+      imgResult.hidden = true;
+      recipeResult.hidden = true;
+      recipeResult.hidden = true;
     })
 
     cancelBtn.addEventListener("click", function(){
@@ -334,30 +366,6 @@
       uploadBtn.disabled = true;
       imgResult.hidden = true;
     })
-
-    function showDishes(){
-      fetch('/getDishes', {
-        method: 'GET',
-      })
-      .then(response => response.json())
-      .then(data => {
-        dishesResult.hidden = false
-        dishName.innerHTML = data["dishes"]
-        dishesResult.scrollIntoView();
-      })
-    }
-
-    function showRecipe(){
-      fetch('/getRecipes', {
-        method: 'GET',
-      })
-      .then(response => response.json())
-      .then(data => {
-        recipeResult.hidden = false
-        recipe.innerHTML = data["Recipe"]
-        recipeResult.scrollIntoView();
-      })
-    }
   </script>
 
 
