@@ -130,5 +130,10 @@ def login_submit():
 	if _user_name == 'admin' and _password == '0987654321' and request.method == "POST": return render_template('index.html.j2')
 	else: return render_template('login.html.j2')
 
+
+@app.route('/about')
+def about():
+	return render_template('about.html.j2')
+	
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False)
