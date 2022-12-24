@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>ANJITA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px/1.8 Lato, sans-serif;
+    color: #777;
+    background-image: url("../static/images/bg_abu1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: bold;
+  }
+  h3{
+    margin: 10px 0 30px 0;
+    letter-spacing: 10px;      
+    font-size: 30px ;
+    color: #111;
+    padding-top: 50px;
+    font-weight: 900;
+  }
+  .container {
+    padding: 10px 120px ;
+  }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+
+  .intro{
+    text-align: justify;
+  }
+  .column {
+    size: 100px;
+    float: left;
+    width: 50%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  @media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+  }
+  a{
+    color: #111;
+  }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="../static/styles/carousel.css" rel="stylesheet">
+  <!-- <link href="../static/styles/my_styles.css" rel="stylesheet"> -->
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+ <header>
+  <a class="navbar-brand" href="/">ANJITA</a>
+ </header>
+<!-- Container (The Band Section) -->
+  <div class="container text-center">
+    <div class="about-section">
+        <h3>ABOUT US PAGE</h3>
+        <p class="intro">In the current 4.0 technology era, the learning and working cycle seem to have taken up every person's daily time. The shortened time has affected the quality of meals and indirectly affects our health. The fact that people prepare meals for themselves, and their families, helps us to control the nutritional content of our bodies actively, as well as to have the delicious dishes we want.</p>
+        <p class="intro">“ANJITA” was created to help households have nutritious, diverse, and rich meals in terms of food choices, helping to cut down on thinking time and choosing dishes.
+      By collecting images of available ingredients, and using computer vision technology to automatically identify ingredients, thereby automatically recommending dishes that can be made based on the above ingredients. provide recipes for that ingredient.</p>
+    </div>
+    <div>
+      <h3>OUR TEAM</h3>
+    </div>
+    
+    <div class="row column">
+      
+        <p class="text-center"><strong>Nguyen Phan Quoc Bao</strong></p><br>
+        <a href="#demo" data-toggle="collapse">
+          <img src="../static/images/QuocBao.png" class="img-circle person" alt="Random Name" width="255" height="255">
+        </a>
+        <div id="demo" class="collapse">
+          <p>University of Sience
+          <br>Majors: computer vision
+          <br>19120456@student.hcmus.edu.vn
+          </p>
+          <a href="https://www.facebook.com/zero1340/" class="button">Contact</a>  
+        </div>
+    </div>  
+    <div class="row column"> 
+        <p class="text-center"><strong>Nguyen Quoc Anh</strong></p><br>
+        <a href="#demo2" data-toggle="collapse">
+          <img src="../static/images/QuocAnh.png" class="img-circle person" alt="Random Name" width="255" height="255">
+          
+        </a>
+        <div id="demo2" class="collapse">
+              <p>University of Sience
+              <br>Majors: computer vision
+              <br>19120450@student.hcmus.edu.vn</p>
+              <a href="https://www.facebook.com/quocanh.nguyen.28012001/" class="button">Contact</a>
+        </div>
+      
+    </div>
+  </div>
+</body>
+</html>
