@@ -1,0 +1,2 @@
+gcloud builds submit --tag gcr.io/anjita/home_page
+gcloud run deploy --image gcr.io/anjita/home_page
